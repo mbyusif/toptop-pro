@@ -277,6 +277,37 @@
         .note strong {
             color: var(--gold-light);
         }
+
+        /* تنسيق حاوية الصور التوضيحية */
+        .steps-visual {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .step-img-box {
+            background: #111111;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .step-img-box span {
+            display: block;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .step-img-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -305,13 +336,26 @@
 
         <!-- زر التحميل في مكانه المعتمد بالأسفل مع النيون الدوار الاحترافي -->
         <div class="btn-wrapper" id="download-section">
-            <a href="𝐓𝐨𝐩𝐓𝐨𝐩_ρɾσ_1.0.apk" class="btn" download>تحميل النسخة الذهبية الآن</a>
+            <!-- ضع رابط الـ Release المباشر الذي نسخته من قيت هاب بين علامتي التنصيص بالأسفل بدلاً من الكلمة المكتوبة -->
+            <a href="ضع_رابط_الـ_Release_المباشر_هنا" class="btn" download>تحميل النسخة الذهبية الآن</a>
         </div>
 
         <div class="note">
             <strong>ملاحظة تقنية:</strong> قد يظهر تنبيه "فحص التطبيق" نظراً لأن هذه النسخة معدلة باحترافية لتتوافق مع كافة الأنظمة والأجهزة.
             <br>
             <strong>طريقة التخطي:</strong> اضغط على "مزيد من التفاصيل" ثم اختر "التثبيت على أي حال" لإتمام العملية بنجاح.
+            
+            <!-- الصور التوضيحية لخطوات تخطي التنبيه -->
+            <div class="steps-visual">
+                <div class="step-img-box">
+                    <span>الخطوة 1: الضغط على مزيد من التفاصيل</span>
+                    <img src="s1.png" alt="الخطوة الأولى">
+                </div>
+                <div class="step-img-box">
+                    <span>الخطوة 2: اختيار التثبيت على أي حال</span>
+                    <img src="s2.png" alt="الخطوة الثانية">
+                </div>
+            </div>
         </div>
     </div>
 
