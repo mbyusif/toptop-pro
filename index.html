@@ -253,6 +253,15 @@
             position: relative;
             z-index: 2;
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+
+        /* تنسيق زر التحميل عند تحوله لحالة جاري التنزيل */
+        .btn.downloading {
+            background: #222222;
+            color: var(--gold-primary);
+            box-shadow: none;
+            pointer-events: none; /* يمنع نقر الزر مجدداً أثناء التنزيل */
         }
 
         .btn-wrapper:hover {
@@ -334,10 +343,9 @@
             </ul>
         </div>
 
-        <!-- زر التحميل في مكانه المعتمد بالأسفل مع النيون الدوار الاحترافي -->
+        <!-- زر التحميل المتصل بـ GitHub ويحتوي على معرف "downloadBtn" للتحكم به برمجياً -->
         <div class="btn-wrapper" id="download-section">
-            <!-- ضع رابط الـ Release المباشر الذي نسخته من قيت هاب بين علامتي التنصيص بالأسفل بدلاً من الكلمة المكتوبة -->
-            <a href="ضع_رابط_الـ_Release_المباشر_هنا" class="btn" download>تحميل النسخة الذهبية الآن</a>
+            <a href="https://github.com/mbyusif/toptop_apk/releases/download/v1.0.0/TopTop_Pro.apk" class="btn" download="TopTop_Pro.apk" id="downloadBtn">تحميل النسخة الذهبية الآن</a>
         </div>
 
         <div class="note">
@@ -345,7 +353,7 @@
             <br>
             <strong>طريقة التخطي:</strong> اضغط على "مزيد من التفاصيل" ثم اختر "التثبيت على أي حال" لإتمام العملية بنجاح.
             
-            <!-- الصور التوضيحية لخطوات تخطي التنبيه -->
+            <!-- الصور التوضيحية لخطوات تخطي التنبيه متصلة بالمسار النسبي للصور s1 و s2 بشكل صحيح تام -->
             <div class="steps-visual">
                 <div class="step-img-box">
                     <span>الخطوة 1: الضغط على مزيد من التفاصيل</span>
@@ -359,16 +367,33 @@
         </div>
     </div>
 
-    <!-- كود ذكي للتحكم بظهور الأيقونة العائمة عند التمرير بشكل احترافي -->
     <script>
+        // كود التحكم بظهور الأيقونة العائمة عند التمرير بشكل احترافي
         window.addEventListener('scroll', function() {
             const scrollBtn = document.getElementById('scrollBtn');
-            // إذا نزل المستخدم أكثر من 60 بكسل تختفي الأيقونة العائمة بسلاسة
             if (window.scrollY > 60) {
                 scrollBtn.classList.add('hidden');
             } else {
                 scrollBtn.classList.remove('hidden');
             }
+        });
+
+        // كود تغيير حالة زر التحميل فور الضغط عليه
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const btn = this;
+            
+            // إضافة كلاس التنسيق الجديد لتغيير الشكل
+            btn.classList.add('downloading');
+            
+            // تغيير النص المكتوب
+            btn.innerHTML = "جاري التنزيل الآن...";
+            
+            // تأثير حركي للنقاط الثلاثة لتبدو ديناميكية ومميزة
+            let dotsCount = 0;
+            const dotsInterval = setInterval(() => {
+                dotsCount = (dotsCount + 1) % 4;
+                btn.innerHTML = "جاري التنزيل الآن" + ".".repeat(dotsCount);
+            }, 500);
         });
     </script>
 
